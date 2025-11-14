@@ -1,10 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: "Roboto Mono";
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+#root,
+.root {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+}
+
+.light-theme {
+  color: #1f2328;
+  background: #fff;
+}
+
+.light-theme-card {
+  background: #f7f8fa;
+}
+
+.dark-theme {
+  color: #d1d7e0;
+  background: #202830;
+}
+
+.dark-theme-card {
+  background: #262c36;
 }
