@@ -10,8 +10,8 @@ import NotesPage from "./components/Notes/NotesPage";
 import { setTheme } from "./slices/themeSlice";
 import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import PublicRoute from "./components/route/PublicRoute";
-import PrivateRoute from "./components/route/PrivateRoute";
+import PublicRoute from "./components/Routes/PublicRoute";
+import PrivateRoute from "./components/Routes/PrivateRoute";
 
 function App() {
   const { token } = useSelector((state) => state.user);

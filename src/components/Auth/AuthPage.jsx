@@ -15,7 +15,7 @@ const AuthPage = () => {
   const classes = {
     tabBaseStyles: {
       fontFamily: "Roboto Mono",
-      fontSize: "18px",
+      fontSize: "20px",
       textTransform: "none",
       color: theme.fontColor,
       backgroundColor: "transparent",
@@ -29,15 +29,15 @@ const AuthPage = () => {
       },
     },
     tabPanelStyles: {
-      backgroundColor: theme.cardBackground,
+      backgroundColor: theme.background,
       color: theme.fontColor,
       fontFamily: "Roboto Mono",
     },
     leftSideFlex: {
       xs: "100%",
-      sm: "30%",
-      md: "30%",
-      lg: "20%",
+      sm: "40%",
+      md: "40%",
+      lg: "30%",
     },
     rightSideFlex: {
       xs: "100%",
@@ -81,9 +81,18 @@ const AuthPage = () => {
         />
       </Box>
 
-      <Box sx={{ flexBasis: classes.rightSideFlex }}>
+      <Box
+        sx={{
+          flexBasis: classes.rightSideFlex,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          flexDirection: "column",
+        }}
+      >
         <TabContext value={tabValue}>
-          <Box sx={{ backgroundColor: theme.cardBackground }}>
+          <Box sx={{ backgroundColor: theme.background }}>
             <TabList
               onChange={handleChange}
               aria-label="User authentication panel"
