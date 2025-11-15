@@ -10,7 +10,7 @@ const initialState = {
   signedUp: false,
 };
 
-export const loginUser = createAsyncThunk(
+const loginUser = createAsyncThunk(
   "user/loginUser",
   async ({ userName, password }, { rejectWithValue }) => {
     try {
@@ -25,7 +25,7 @@ export const loginUser = createAsyncThunk(
   },
 );
 
-export const signUpUser = createAsyncThunk(
+const signUpUser = createAsyncThunk(
   "user/registerUser",
   async ({ name, email, password }, { rejectWithValue }) => {
     try {
@@ -79,4 +79,5 @@ const userSlice = createSlice({
 });
 
 export const { logout } = userSlice.actions;
+export { loginUser, signUpUser };
 export default userSlice.reducer;

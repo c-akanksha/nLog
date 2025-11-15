@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Typography, Button } from "@mui/material";
-import { useSelector } from "react-redux";
+import { Button } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import FormWrapper from "../../../utils/Reusable/FormWrapper";
 import FormInput from "../../../utils/Reusable/FormInput";
+import { signUpUser } from "../../../slices/userSlice";
 
-const RegisterPage = () => {
+const RegisterPage = ({ onHelpClick }) => {
   const { theme } = useSelector((s) => s.theme);
+  const dispatch = useDispatch();
 
   const [form, setForm] = useState({
     name: "",
@@ -15,6 +17,8 @@ const RegisterPage = () => {
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleUserRegister = () => dispatch(signUpUser(form));
 
   return (
     <FormWrapper tag={"Welcome, future note logger"}>
@@ -52,21 +56,22 @@ const RegisterPage = () => {
           fontSize: "16px",
           mt: 1,
         }}
+        onClick={handleUserRegister}
       >
         Let’s Begin the Log Journey
       </Button>
-      <Typography
+      <Button
         sx={{
-          textAlign: "center",
           mt: 2,
           color: theme.fontColor,
           fontFamily: "Roboto Mono",
-          fontSize: "13px",
-          cursor: "pointer",
+          fontSize: "14px",
+          textTransform: "none",
         }}
+        onClick={onHelpClick}
       >
         {"> Already have an account? Login"}
-      </Typography>
+      </Button>
     </FormWrapper>
   );
 };

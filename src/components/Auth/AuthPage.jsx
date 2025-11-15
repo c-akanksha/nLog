@@ -109,11 +109,11 @@ const AuthPage = () => {
           </Box>
 
           <TabPanel value="1" sx={classes.tabPanelStyles}>
-            <RegisterPage />
+            <RegisterPage onHelpClick={() => setTabValue("2")} />
           </TabPanel>
 
           <TabPanel value="2" sx={classes.tabPanelStyles}>
-            <LoginPage />
+            <LoginPage onHelpClick={() => setTabValue("1")} />
           </TabPanel>
         </TabContext>
       </Box>

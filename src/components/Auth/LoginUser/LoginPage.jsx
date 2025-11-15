@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import FormWrapper from "../../../utils/Reusable/FormWrapper";
 import FormInput from "../../../utils/Reusable/FormInput";
 
-const LoginPage = () => {
+const LoginPage = ({ onHelpClick }) => {
   const { theme } = useSelector((s) => s.theme);
 
   const [form, setForm] = useState({
@@ -49,17 +49,18 @@ const LoginPage = () => {
         Let's get you logged in!
       </Button>
 
-      <Typography
+      <Button
         sx={{
-          textAlign: "center",
           mt: 2,
           color: theme.fontColor,
           fontFamily: "Roboto Mono",
-          fontSize: "13px",
+          fontSize: "14px",
+          textTransform: "none",
         }}
+        onClick={onHelpClick}
       >
         {"> New user? Register"}
-      </Typography>
+      </Button>
     </FormWrapper>
   );
 };
