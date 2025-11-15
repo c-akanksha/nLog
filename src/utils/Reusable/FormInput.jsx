@@ -21,7 +21,16 @@ const FormInput = ({ label, name, value, onChange, type = "text", theme }) => (
           borderRadius: "6px",
         },
       }}
-      sx={{ mb: 2 }}
+      sx={{
+        mb: 2,
+        backgroundColor: theme.cardBackground,
+        "& .MuiOutlinedInput-root": {
+          backgroundColor: theme.cardBackground,
+        },
+        "& .MuiInputBase-input": {
+          backgroundColor: theme.cardBackground,
+        },
+      }}
     />
   </>
 );

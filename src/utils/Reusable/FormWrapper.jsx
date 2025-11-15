@@ -2,7 +2,7 @@ import { Box, Paper } from "@mui/material";
 import WindowDots from "./WindowDots";
 import { useSelector } from "react-redux";
 
-const FormWrapper = ({ children, tag }) => {
+const FormWrapper = ({ children, tag, loading }) => {
   const { theme } = useSelector((s) => s.theme);
 
   return (
@@ -18,7 +18,7 @@ const FormWrapper = ({ children, tag }) => {
           borderRadius: "10px",
         }}
       >
-        <WindowDots theme={theme} tag={tag} />
+        <WindowDots theme={theme} tag={tag} loading={loading} />
         {children}
       </Paper>
     </Box>

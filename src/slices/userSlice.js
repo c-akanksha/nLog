@@ -12,15 +12,15 @@ const initialState = {
 
 const loginUser = createAsyncThunk(
   "user/loginUser",
-  async ({ userName, password }, { rejectWithValue }) => {
+  async ({ username, password }, { rejectWithValue }) => {
     try {
       const data = new URLSearchParams();
-      data.append("username", userName);
+      data.append("username", username);
       data.append("password", password);
       const response = await api.userApi.login(data);
       return response.data;
     } catch (err) {
-      return rejectWithValue(err.response?.data);
+      return rejectWithValue(err.response?.data?.detail);
     }
   },
 );
@@ -32,7 +32,7 @@ const signUpUser = createAsyncThunk(
       const response = await api.userApi.signUp({ name, email, password });
       return response.data;
     } catch (err) {
-      return rejectWithValue(err?.response?.data);
+      return rejectWithValue(err?.response?.data?.detail);
     }
   },
 );
