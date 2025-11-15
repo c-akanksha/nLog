@@ -10,13 +10,15 @@ import NotesPage from "./components/Notes/NotesPage";
 import { setTheme } from "./slices/themeSlice";
 import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
+import PublicRoute from "./components/route/PublicRoute";
+import PrivateRoute from "./components/route/PrivateRoute";
 
 function App() {
   const { token } = useSelector((state) => state.user);
   const [systemTheme, setSystemTheme] = useState(null);
   const dispatch = useDispatch();
 
-  const isAuth = token !== null;
+  const isAuth = Boolean(token);
 
   useEffect(() => {
     const isDarkMode = window.matchMedia(
@@ -25,20 +27,29 @@ function App() {
     const theme = isDarkMode ? "dark" : "light";
     setSystemTheme(theme);
     dispatch(setTheme(theme));
-  }, []);
+  }, [dispatch]);
+
   return (
     <Box className={`${systemTheme}-theme root`}>
       <Router>
         <Routes>
           <Route
             path="/"
-            element={isAuth ? <Navigate to="/notes" /> : <AuthPage />}
+            element={
+              <PublicRoute isAuth={isAuth}>
+                <AuthPage />
+              </PublicRoute>
+            }
           />
           <Route
             path="/notes"
-            element={isAuth ? <NotesPage /> : <Navigate to="/" />}
+            element={
+              <PrivateRoute isAuth={isAuth}>
+                <NotesPage />
+              </PrivateRoute>
+            }
           />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Router>
     </Box>
